@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;1,500&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,700;1,500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <title>Task managert</title>
+
+	<script src="https://unpkg.com/vue@next"></script>
+</head>
+<body>
+    <header>
+		<div class="container-b header__inner">
+			<div class="wrapper">
+				<div class="header_pic">
+					<img src="img\Logo.png" width="150" alt="404">
+				</div>
+	
+				<h1 class="header_title">Task manager</h1>
+			</div>
+
+			<div class="wrapper">
+				<div class="header_sibtitle_pic">
+					<img src="img\information.png" width="30">
+				</div>
+	
+				<div class="header_subtitle">
+					<p>Kanban - метод управления разработкой, реализующий принцип «точно в срок»‎.</p>
+				</div>
+			</div>
+
+		</div>
+    </header>
+
+    <main id="app" class="container-b">
+        <div class="task_add">
+            <form name="task_add" method="post">
+                <label for="add">Новая задача</label>
+				<input 
+					type="text" 
+					size="40" 
+					name="add" 
+					id="add" 
+					placeholder="Описание задачи"
+					v-model="input"
+				>
+
+				<button 
+					class="main_task_button" 
+					type="submit"
+					@click.prevent="click"
+				>+ добавить</button>
+        </div>
+
+        <div class="container">
+            <div class="backlog">
+
+                <h1>Backlog</h1>
+
+                <div class="add_backlog" v-for="item in backlog">
+                    <p class="backlog_subtitle">{{ item }}</p>
+
+                    <div class="add_backlog_buttons">
+                        <button class="buttononcard" type="button"><img src="img\check.png" width="35"></button>
+                        <button class="buttononcard" type="button"><img src="img\pencil.png" width="35"></button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="inprogress">
+
+                <h1>In progress</h1>
+
+                <div class="task1">
+                    <p class="task1_subtitle">Написать и проверить CSS</p>
+
+                    <div class="inprogress_description">
+
+                        <p class="description1">Начало:</p>
+                        <p class="description2">31.01.2021 16:00</p>
+                        <p class="description3"><strong>Ответственный</strong></p>
+                        <p class="description4">Иван</p>
+
+                    </div>
+
+                    <div class="add_inprogress_buttons1">
+                        <button class="buttononcard" type="button"><img src="img\check.png" width="35"></button>
+                        <button class="buttononcard" type="button"><img src="img\pencil.png" width="35"></button>
+                    </div>
+                </div>
+
+                <div class="task2">
+                    <p class="task2_subtitle">Подготовить репозиторий</p>
+
+                    <div class="inprogress_description">
+
+                        <p class="description1">Начало:</p> 
+                        <p class="description2">31.01.2021 17:00</p>
+                        <p class="description3"><strong>Ответственный</strong></p>
+                        <p class="description4">Петр</p>
+
+                    </div>
+
+                    <div class="add_inprogress_buttons2">
+                        <button class="buttononcard" type="button"><img src="img\check.png" width="35"></button>
+                        <button class="buttononcard" type="button"><img src="img\pencil.png" width="35"></button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="done">
+
+                <h1>Done</h1>
+
+                <div class="done_tasks1">
+                    <p class="done_subtitle1">Сформировать структуру</p>
+
+                    <div class="done_description">
+
+                        <p class="description1">Начало:</p> 
+                        <p class="description2">31.01.2021 16:00</p>
+                        <p class="description3">Завершено:</p>
+                        <p class="description4">30.01.2021 17:00</p>
+                        <p class="description5"><strong>Ответственный</strong></p>
+                        <p class="description6">Илья</p>
+
+                    </div>
+
+                    <div class="add_done_buttons1">
+                        <button class="buttononcard" type="button"><img src="img\check.png" width="35"></button>
+                        <button class="buttononcard" type="button"><img src="img\pencil.png" width="35"></button>
+                    </div>
+                </div>
+
+                <div class="done_tasks2">
+                    <p class="done_subtitle2">Подготовить текст</p>
+
+                    <div class="done_description">
+
+                        <p class="description1">Начало:</p> 
+                        <p class="description2">31.01.2021 17:00</p>
+                        <p class="description3">Завершено:</p>
+                        <p class="description4">30.01.2021 18:00</p>
+                        <p class="description5"><strong>Ответственный</strong></p>
+                        <p class="description6">Сергей</p>    
+
+                    </div>
+
+                    <div class="add_done_buttons2">
+                        <button class="buttononcard" type="button"><img src="img\check.png" width="35"></button>
+                        <button class="buttononcard" type="button"><img src="img\pencil.png" width="35"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <p>Жидов Артем Валерьевич</p>
+            <br>
+            <p>201-322</p>
+            <br>
+            <p>01.02.2021</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
